@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "Phishing Detective",
+  "version": "1.0",
+  "description": "AI powered phishing detection",
+
+  "icons": {
+    "16": "detective.png",
+    "48": "detective.png",
+    "128": "detective.png"
+  },
+
+  "background": {
+    "service_worker": "background.js"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ],
+
+  "permissions": [
+    "activeTab",
+    "scripting"
+  ],
+
+  "host_permissions": [
+    "<all_urls>"
+  ]
+}

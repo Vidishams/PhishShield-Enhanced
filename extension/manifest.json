@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "URL Unshortener",
+  "version": "1.0",
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Unshorten URLs"
+  },
+  "permissions": [
+    "activeTab"
+  ],
+"icons": {
+    "16": "icon3.png",
+    "48": "icon3.png",
+    "128": "icon3.png"
+  }
+}

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Unshorten URL</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+    *{
+      box-sizing:border-box;
+    }
+
+    body {
+      font-family: 'Inter', Arial, sans-serif;
+      padding: 15px;
+      width: 300px;
+      background-color: #ff8800;
+      color: #1a1a1a;
+      overflow: hidden;
+      position: relative;
+      text-align:center;
+    }
+
+    .logo-container{
+      display:flex;
+      justify-content:center;
+      margin-bottom:10px;
+      position:relative;
+      z-index:1;
+    }
+
+    /* Rounded square logo */
+    .logo-container img{
+      width:60px;
+      height:60px;
+      border-radius:12px;
+      object-fit:cover;
+      border:2px solid white;
+      box-shadow:0 0 10px rgba(255,255,255,0.5);
+    }
+
+    h3{
+      color:white;
+      font-size:1.6rem;
+      margin-bottom:10px;
+      z-index:1;
+      position:relative;
+    }
+
+    input{
+      width:100%;
+      padding:10px;
+      font-size:14px;
+      border:2px solid white;
+      border-radius:6px;
+      outline:none;
+      margin-top:8px;
+      position:relative;
+      z-index:1;
+    }
+
+    button{
+      width:100%;
+      padding:10px;
+      margin-top:10px;
+      font-size:15px;
+      font-weight:600;
+      background:white;
+      color:#ff8800;
+      border:none;
+      border-radius:6px;
+      cursor:pointer;
+      transition:0.3s;
+      position:relative;
+      z-index:1;
+    }
+
+    button:hover{
+      background:#ffe0b3;
+    }
+
+    #result{
+      margin-top:12px;
+      font-weight:600;
+      font-size:14px;
+      color:white;
+      word-wrap:break-word;
+      position:relative;
+      z-index:1;
+    }
+
+    .bubble{
+      position:absolute;
+      background:rgba(255,255,255,0.3);
+      border-radius:50%;
+      animation:rise 8s infinite;
+      z-index:0;
+    }
+
+    @keyframes rise{
+      0%{transform:translateY(100%);opacity:0;}
+      10%{opacity:0.3;}
+      50%{opacity:0.6;}
+      100%{transform:translateY(-150%);opacity:0;}
+    }
+
+  </style>
+</head>
+
+<body>
+
+<div class="logo-container">
+<img src="orange_fish.jpg" alt="PhishShield Logo">
+</div>
+
+<h3>Paste Short URL</h3>
+
+<input type="text" id="urlInput" placeholder="Enter The Shortened URL">
+
+<button id="checkBtn">Unshorten</button>
+
+<div id="result"></div>
+
+<div class="bubble" style="width:20px;height:20px;left:10%;animation-delay:0s;"></div>
+<div class="bubble" style="width:15px;height:15px;left:30%;animation-delay:2s;"></div>
+<div class="bubble" style="width:25px;height:25px;left:50%;animation-delay:4s;"></div>
+<div class="bubble" style="width:10px;height:10px;left:70%;animation-delay:1s;"></div>
+<div class="bubble" style="width:18px;height:18px;left:90%;animation-delay:3s;"></div>
+
+<script src="popup.js"></script>
+
+</body>
+</html>
