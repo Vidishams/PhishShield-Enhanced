@@ -13,15 +13,15 @@ The extension analyzes website URLs, expands shortened links, evaluates structur
 
 ## Features
 
-- ✅ Real-time phishing website detection
-- ✅ URL feature analysis
-- ✅ Shortened URL expansion (Bit.ly, TinyURL, etc.)
-- ✅ AI-based phishing detection using Machine Learning
-- ✅ Google Safe Browsing verification
-- ✅ Instant warning alerts
-- ✅ Lightweight Chrome Extension
-- ✅ Secure user authentication with Firebase
-- ✅ Detection history stored in Firebase Firestore
+- Real-time phishing website detection
+- URL feature analysis
+- Shortened URL expansion (Bit.ly, TinyURL, etc.)
+- AI-based phishing detection using Machine Learning
+- Google Safe Browsing verification
+- Instant warning alerts
+- Lightweight Chrome Extension
+- Secure user authentication with Firebase
+- Detection history stored in Firebase Firestore
 
 ---
 
