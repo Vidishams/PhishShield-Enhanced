@@ -7,6 +7,7 @@ import DocumentationSection from "@/components/DocumentationSection";
 import FAQSection from "@/components/FAQSection";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
+import ThreatAnalyticsDashboard from "@/components/ThreatAnalyticsDashboard";
 
 const Index = () => {
   const { user } = useAuth(); // Get current logged-in user
@@ -26,6 +27,7 @@ const Index = () => {
         )}
 
         <HeroSection />
+        <ThreatAnalyticsDashboard />
         <FeaturesSection />
         <HowItWorksSection />
         <DocumentationSection />
