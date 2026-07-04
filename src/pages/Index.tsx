@@ -10,7 +10,8 @@ import Footer from "@/components/Footer";
 import ThreatAnalyticsDashboard from "@/components/ThreatAnalyticsDashboard";
 
 const Index = () => {
-  const { user } = useAuth(); // Get current logged-in user
+  const { user } = useAuth();
+  const displayName = user?.displayName || user?.email?.split("@")[0] || "there";
 
   return (
     <div className="min-h-screen bg-background">
@@ -21,7 +22,7 @@ const Index = () => {
         {user && (
           <div className="text-center mt-6 mb-4">
             <p className="text-lg text-muted-foreground">
-              Welcome back, <span className="font-semibold">{user.displayName}</span>!
+              Welcome back, <span className="font-semibold">{displayName}</span>!
             </p>
           </div>
         )}

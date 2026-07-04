@@ -1,4 +1,5 @@
 // src/components/ui/toaster.tsx
+import { useEffect } from "react";
 import { useToast } from "@/hooks/use-toast";
 import {
   Toast,
@@ -11,7 +12,13 @@ import {
 
 // Component to render toast notifications
 export function Toaster() {
-  const { toasts } = useToast();
+  const toastState = useToast();
+
+  useEffect(() => {
+    setToast(toastState);
+  }, [toastState]);
+
+  const { toasts } = toastState;
 
   return (
     <ToastProvider>
