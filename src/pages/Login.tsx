@@ -1,16 +1,52 @@
-import { signInWithPopup } from "firebase/auth";
+import { useEffect, useState } from "react";
+import { getRedirectResult, signInWithPopup, signInWithRedirect } from "firebase/auth";
 import { auth, googleProvider } from "../firebase";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
+  useEffect(() => {
+    const handleRedirectResult = async () => {
+      try {
+        const result = await getRedirectResult(auth);
+        if (result?.user) {
+          navigate("/", { replace: true });
+        }
+      } catch (error) {
+        console.error("Google redirect sign-in failed:", error);
+        setErrorMessage("Google sign-in could not be completed. Please try again.");
+      }
+    };
+
+    void handleRedirectResult();
+  }, [navigate]);
 
   const handleGoogleLogin = async () => {
+    setIsLoading(true);
+    setErrorMessage(null);
+
     try {
       await signInWithPopup(auth, googleProvider);
-      navigate("/");
+      navigate("/", { replace: true });
     } catch (error) {
-      console.error(error);
+      const code = typeof error === "object" && error && "code" in error ? (error as { code?: string }).code : undefined;
+
+      if (code === "auth/popup-blocked" || code === "auth/popup-closed-by-user") {
+        try {
+          await signInWithRedirect(auth, googleProvider);
+          return;
+        } catch (redirectError) {
+          console.error("Google redirect sign-in failed:", redirectError);
+        }
+      }
+
+      console.error("Google sign-in failed:", error);
+      setErrorMessage("Unable to sign in with Google right now. Please try again.");
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -144,13 +180,15 @@ const Login = () => {
             Detect phishing attacks instantly and stay protected online.
           </p>
 
-          <button className="google-btn" onClick={handleGoogleLogin}>
+          {errorMessage && <p className="mb-4 text-sm text-red-500">{errorMessage}</p>}
+
+          <button className="google-btn" onClick={handleGoogleLogin} disabled={isLoading}>
             <img
               className="google-icon"
               src="https://cdn-icons-png.flaticon.com/512/300/300221.png"
               alt="google"
             />
-            Sign in with Google
+            {isLoading ? "Signing in..." : "Sign in with Google"}
           </button>
         </div>
       </div>
